@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lead CSV Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .upload-form {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lead CSV Upload</h1>
+    <div class="upload-form">
+        <form id="uploadForm">
+            <input type="file" id="csvFile" accept=".csv" required>
+            <button type="submit">Upload and Process</button>
+        </form>
+    </div>
+    <div id="results" class="results"></div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            const fileInput = document.getElementById('csvFile');
+            formData.append('file', fileInput.files[0]);
+            
+            try {
+                const response = await fetch('/upload-csv/', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                const results = document.getElementById('results');
+                results.style.display = 'block';
+                results.innerHTML = `
+                    <h3>Processing Results:</h3>
+                    <p>File: ${data.filename}</p>
+                    <p>Processed: ${data.statistics.processed}</p>
+                    <p>Successful: ${data.statistics.success}</p>
+                    <p>Failed: ${data.statistics.failed}</p>
+                `;
+            } catch (error) {
+                alert('Error uploading file: ' + error);
+            }
+        });
+    </script>
+</body>
+</html>
