@@ -1,0 +1,4 @@
+2025-04-28 04:34:54,141 - csv_processor - ERROR - Missing required columns: {'company_name'}
+2025-04-28 04:34:57,957 - csv_processor - ERROR - Missing required columns: {'company_name'}
+2025-04-28 04:35:55,807 - csv_processor - ERROR - Missing required columns: {'company_name'}
+2025-04-28 04:38:53,807 - csv_processor - ERROR - Missing required columns: {'company_name'}

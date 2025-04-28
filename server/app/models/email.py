@@ -10,6 +10,15 @@ class EmailStatusEnum(str, enum.Enum):
     received = "received"
     replied = "replied"
 
+class EmailRoleEnum(str, enum.Enum):
+    user = "user"
+    company = "company"
+
+class EmailResponseTypeEnum(str, enum.Enum):
+    positive = "positive"
+    negative = "negative"
+    neutral = "neutral"
+
 class Email(Base):
     __tablename__ = 'emails'
 
@@ -23,6 +32,9 @@ class Email(Base):
     opened_at = Column(DateTime)
     replied_at = Column(DateTime)
     tracking_id = Column(String)
+    role = Column(Enum(EmailRoleEnum), nullable=True)
+    response_type = Column(Enum(EmailResponseTypeEnum), nullable=True)
+
 
     campaign = relationship("Campaign", back_populates="emails")
     company = relationship("Company", back_populates="emails")

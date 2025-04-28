@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 import uuid
 from datetime import datetime
-from app.models.email import EmailStatusEnum
+from app.models.email import EmailStatusEnum, EmailRoleEnum, EmailResponseTypeEnum
 
 class EmailBase(BaseModel):
     campaign_id: uuid.UUID
@@ -14,6 +14,8 @@ class EmailBase(BaseModel):
     opened_at: Optional[datetime] = None
     replied_at: Optional[datetime] = None
     tracking_id: Optional[str] = None
+    role: Optional[EmailRoleEnum] = None
+    response_type: Optional[EmailResponseTypeEnum] = None
 
 class EmailCreate(EmailBase):
     subject: str
@@ -26,7 +28,7 @@ class EmailInDBBase(EmailBase):
     id: uuid.UUID
 
     class Config:
-        orm_mode = True
+        from_attributes = True  # For Pydantic v2
 
 class Email(EmailInDBBase):
     pass

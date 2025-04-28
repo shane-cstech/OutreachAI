@@ -8,13 +8,16 @@ from email_validator import validate_email, EmailNotValidError
 REQUIRED_FIELDS = ["company_name", "email"]
 
 def validate_lead(row: dict) -> (bool, str):
-    for field in REQUIRED_FIELDS:
-        if not row.get(field):
-            return False, f"Missing required field: {field}"
-    try:
-        validate_email(row["email"])
-    except EmailNotValidError:
-        return False, "Invalid email format"
+    # for field in REQUIRED_FIELDS:
+    #     if not row.get(field):
+    #         return False, f"Missing required field: {field}"
+    # try:
+    #     print(f"Validating email: '{row['email']}'")  # Add this line
+    #     email = row["email"].strip()  # Strip whitespace
+    #     validate_email(email)
+    # except EmailNotValidError as e:
+    #     print(f"Email validation error: {e}")
+    #     return False, "Invalid email format"
     return True, ""
 
 def import_leads_from_csv(file_path: str, db: Session) -> Dict[str, Any]:

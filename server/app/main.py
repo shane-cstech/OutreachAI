@@ -5,6 +5,8 @@ from app.api.endpoints import (
 
 app = FastAPI()
 
+# init_db() 
+
 app.include_router(company.router, prefix="/companies", tags=["companies"])
 app.include_router(proposal.router, prefix="/proposals", tags=["proposals"])
 app.include_router(campaign.router, prefix="/campaigns", tags=["campaigns"])

@@ -1,5 +1,10 @@
 from app.db.session import engine
-from app.models import base, user, company, campaign, email, proposal, campaign_lead
+from app.db.base_class import Base
+from app.models import company, proposal, campaign, campaign_lead, email, user
 
 def init_db():
-    base.Base.metadata.create_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+
+if __name__ == "__main__":
+    init_db()
+    print("All tables created!")

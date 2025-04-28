@@ -3,6 +3,9 @@ uvicorn
 sqlalchemy
 psycopg2-binary
 alembic
+pandas
+python-multipart
+email-validator
 pydantic
 python-dotenv
-email-validator
+watchfiles

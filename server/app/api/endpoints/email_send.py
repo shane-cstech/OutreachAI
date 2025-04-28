@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from app.services.email_service import send_email_smtp
 from app.db.session import SessionLocal
 from app.schemas.email import EmailCreate
-from app.models.email import Email
 from typing import Optional
+from app.schemas.email import Email
 
 router = APIRouter()
 

@@ -9,7 +9,7 @@ class CompanyBase(BaseModel):
     description: Optional[str] = None
     location: Optional[str] = None
     lead_stage: Optional[str] = None
-    interests: Optional[List[str]] = None
+    interests: Optional[str] = None
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     email: Optional[EmailStr] = None

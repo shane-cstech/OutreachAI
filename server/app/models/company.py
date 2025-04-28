@@ -14,7 +14,7 @@ class Company(Base):
     description = Column(Text)
     location = Column(String)
     lead_stage = Column(String)
-    interests = Column(ARRAY(String))
+    interests = Column(String)
     first_name = Column(String)
     last_name = Column(String)
     email = Column(String)
